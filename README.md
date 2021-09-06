@@ -32,3 +32,90 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+## Install NextJs App
+
+```bash
+yarn create next-app tesnexttailwind
+```
+
+## Install Tailwind Postcss autoprefixer
+
+```bash
+yarn add -D tailwindcss@latest postcss@latest autoprefixer@latest
+```
+
+## Setup Tailwind
+- Next, generate your tailwind.config.js and postcss.config.js files:
+```bash
+npx tailwindcss init -p
+```
+
+- Configure Tailwind to remove unused styles in production
+
+```bash
+  // tailwind.config.js
+  module.exports = {
+   purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {},
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [],
+  }
+  ```
+## Include Tailwind in your CSS
+  - Import Tailwind directly in your Js
+  ```bash
+    // pages/_app.js
+
+ import 'tailwindcss/tailwind.css'
+
+  function MyApp({ Component, pageProps }) {
+    return <Component {...pageProps} />
+  }
+
+  export default MyApp
+``
+
+## Setup Font Google
+``` bash
+// pages/_document.js
+
+import Document, { Html, Head, Main, NextScript } from 'next/document'
+
+class MyDocument extends Document {
+  render() {
+    return (
+      <Html>
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter&display=optional"
+            rel="stylesheet"
+          />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    )
+  }
+}
+
+export default MyDocument
+```
+## Menonaktifkan Pengoptimalan
+
+```bash
+// next.config.js
+
+module.exports = {
+  optimizeFonts: false,
+}
+
+```
